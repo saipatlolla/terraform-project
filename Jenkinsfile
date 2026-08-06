@@ -13,7 +13,7 @@ pipeline {
         stage('Checkout Terraform Code') {
             steps {
                 git branch: 'main',
-                    credentialsId: 'git-ssh-credential',
+                    credentialsId: 'github-creds',
                     url: 'git@github.com:saipatlolla/terraform-project.git'
             }
         }
