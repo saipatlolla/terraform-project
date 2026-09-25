@@ -25,5 +25,14 @@ pipeline {
                 }
             }
         }
+        
+        stage('terraform validate'){
+            steps{
+                dir('environments/dev'){
+                    sh 'terraform validate'
+                }
+            }
+        }
+
     }
 }
