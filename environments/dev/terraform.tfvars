@@ -7,7 +7,7 @@ instance_type = "c7i-flex.large"
 subnet_id = "subnet-09d0df550a87eeb10"
 
 security_group_ids = [
-   "sg-0cf15c3d65142e95b"
+  "sg-0cf15c3d65142e95b"
 ]
 
 key_name = "kubernetes_practice"
