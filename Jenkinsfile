@@ -37,7 +37,8 @@ pipeline {
         stage('terraform plan'){
             steps{
                 dir('environments/dev'){
-                    sh 'terraform plan'
+                    sh 'terraform plan -out=tfplan'
+                    sh 'terraform show -no-color tfplan > tfplan.txt' 
                 }
             
             }  
