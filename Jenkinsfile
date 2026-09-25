@@ -58,7 +58,7 @@ pipeline {
         stage('Devops approval'){
             steps{
                 input(
-                    message: 'Terraform plan reviewed. Approve to apply?'
+                    message: 'Terraform plan reviewed. Approve to apply?',
                     ok: 'Approve'
                  )
             }
