@@ -11,5 +11,11 @@ pipeline {
                     url: 'https://github.com/saipatlolla/terraform-project.git'
             }
         }
+        
+        stage('Terraform Format'){
+            steps{
+                sh 'terraform fmt -check -recursive'
+            }
+        }
     }
 }
