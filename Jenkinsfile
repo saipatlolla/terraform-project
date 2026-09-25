@@ -45,5 +45,15 @@ pipeline {
 
         }
 
+        stage('Publish Terraform Plan'){
+            steps{
+                dir('environments/dev'){
+                    archiveArtifacts artifacts: 'tfplan.txt',
+                        fingerprint: true
+                }
+            }
+ 
+        }
+
     }
 }
