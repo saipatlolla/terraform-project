@@ -17,5 +17,13 @@ pipeline {
                 sh 'terraform fmt -check -recursive'
             }
         }
+        
+        stage('terraform init'){
+            steps{
+                dir('environments/dev'){
+                    sh 'terraform init'
+                }
+            }
+        }
     }
 }
