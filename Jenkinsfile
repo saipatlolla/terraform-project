@@ -65,5 +65,13 @@ pipeline {
 
         }
 
+        stage('terraform apply'){
+            steps{
+                dir('environments/dev'){
+                    sh 'terraform apply tfplan '
+                }
+            }
+        }
+
     }
 }
