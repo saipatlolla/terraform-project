@@ -12,6 +12,6 @@ security_group_ids = [
 
 key_name = "kubernetes_practice"
 
-instance_name = "terraform-dev-pr-test"
+instance_name = "terraform-dev-pr-test-2"
 
 environment = "dev"
