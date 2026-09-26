@@ -60,6 +60,7 @@ pipeline {
                 input(
                     message: 'Terraform plan reviewed. Approve to apply?',
                     ok: 'Approve'
+                    submitter: 'shanker'
                  )
             }
 
