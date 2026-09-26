@@ -46,6 +46,10 @@ pipeline {
         }
 
         stage('Publish Terraform Plan'){
+            when {
+                branch 'main'
+            }
+
             steps{
                 dir('environments/dev'){
                     archiveArtifacts artifacts: 'tfplan.txt',
@@ -56,6 +60,10 @@ pipeline {
         }
         
         stage('Devops approval'){
+            when {
+                branch 'main'
+            }
+
             steps{
                 input(
                     message: 'Terraform plan reviewed. Approve to apply?',
@@ -67,6 +75,10 @@ pipeline {
         }
 
         stage('terraform apply'){
+            when {
+                branch 'main'
+            }    
+
             steps{
                 dir('environments/dev'){
                     sh 'terraform apply tfplan '
