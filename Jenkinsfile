@@ -3,6 +3,15 @@ pipeline {
         label 'terraform'
     }
 
+    parameters {
+        choice(
+            name: 'ENVIRONMENT',
+            choices: ['dev','qa','prod'],
+            description: 'Terraform environment to deploy'
+        )
+
+    }
+
     stages {
         
         stage('Terraform Format'){
