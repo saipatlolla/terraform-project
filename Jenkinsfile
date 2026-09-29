@@ -7,7 +7,7 @@ pipeline {
         choice(
             name: 'ENVIRONMENT',
             choices: ['dev','qa','prod'],
-            description: 'Terraform environment to deploy'
+            description: 'Terraform environments to deploy'
         )
 
     }
