@@ -22,7 +22,7 @@ pipeline {
         
         stage('Terraform init'){
             steps{
-                dir('environments/dev'){
+                dir("environments/${params.ENVIRONMENT}"){
                     sh 'terraform init'
                 }
             }
@@ -30,7 +30,7 @@ pipeline {
         
         stage('terraform validate'){
             steps{
-                dir('environments/dev'){
+                dir("environments/${params.ENVIRONMENT}"){
                     sh 'terraform validate'
                 }
             }
@@ -38,7 +38,7 @@ pipeline {
       
         stage('terraform plan'){
             steps{
-                dir('environments/dev'){
+                dir("environments/${params.ENVIRONMENT}"){
                     sh 'terraform plan -out=tfplan'
                     sh 'terraform show -no-color tfplan > tfplan.txt' 
                 }
@@ -53,7 +53,7 @@ pipeline {
             }
 
             steps{
-                dir('environments/dev'){
+                dir("environments/${params.ENVIRONMENT}"){
                     archiveArtifacts artifacts: 'tfplan.txt',
                         fingerprint: true
                 }
@@ -68,7 +68,7 @@ pipeline {
 
             steps{
                 input(
-                    message: 'Terraform plan reviewed. Approve to apply?',
+                    message: "Terraform ${params.ENVIRONMENT} plan reviewed. Approve to apply?",
                     ok: 'Approve',
                     submitter: 'shanker'
                  )
@@ -82,7 +82,7 @@ pipeline {
             }    
 
             steps{
-                dir('environments/dev'){
+                dir("environments/${params.ENVIRONMENT}"){
                     sh 'terraform apply tfplan '
                 }
             }
